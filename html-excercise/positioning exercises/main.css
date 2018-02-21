@@ -1,0 +1,228 @@
+/*two columns excercise*/
+#div1 {
+    background-color: blue;
+    position: absolute;
+    left: 0%;
+    right: 80%;
+    top: 0%;
+    bottom: 0%;
+    height: 100%;
+}
+
+#div2 {
+    background-color: red;
+    position: absolute;
+    left: 20%;
+    right: 0%;
+    top: 0%;
+    bottom: 0%;
+    height: 100%;
+}
+/*three columns excercise*/
+#div-a {
+    background-color: blue;
+    position: absolute;
+    left: 0%;
+    right: 80%;
+    top: 0%;
+    bottom: 0%;
+    height: 100%;
+}
+
+#div-b {
+    background-color: red;
+    position: absolute;
+    left: 20%;
+    right: 20%;
+    top: 0%;
+    bottom: 0%;
+    height: 100%;
+}
+
+#div-c {
+    background-color: black;
+    position: absolute;
+    left: 80%;
+    right: 0%;
+    top: 0%;
+    bottom: 0%;
+    height: 100%;
+}
+
+/*9 grids excercise*/
+#sq1 {
+    background-color: red;
+    position: absolute;
+    left: 0%;
+    right: 66%;
+    top: 0%;
+    bottom: 66%;
+    height: 33%;
+
+    color: white;
+    font-size: 100px;
+    text-align: center;
+}
+
+#sq2 {
+    background-color: green;
+    position: absolute;
+    left: 0%;
+    right: 66%;
+    top: 33%;
+    bottom: 33%;
+    height: 33%;
+
+    color: white;
+    font-size: 100px;
+    text-align: center;
+}
+
+#sq3 {
+    background-color: blue;
+    position: absolute;
+    left: 0%;
+    right: 66%;
+    top: 66%;
+    bottom: 0%;
+    height: 33%;
+
+    color: white;
+    font-size: 100px;
+    text-align: center;
+}
+
+#sq4 {
+    background-color: yellow;
+    position: absolute;
+    left: 33%;
+    right: 33%;
+    top: 0%;
+    bottom: 66%;
+    height: 33%;
+
+    color: white;
+    font-size: 100px;
+    text-align: center;
+}
+
+#sq5 {
+    background-color: orange;
+    position: absolute;
+    left: 33%;
+    right: 33%;
+    top: 33%;
+    bottom: 33%;
+    height: 33%;
+
+    color: white;
+    font-size: 100px;
+    text-align: center;
+}
+
+#sq6 {
+    background-color: violet;
+    position: absolute;
+    left: 33%;
+    right: 33%;
+    top: 66%;
+    bottom: 0%;
+    height: 33%;
+
+    color: white;
+    font-size: 100px;
+    text-align: center;
+}
+
+#sq7 {
+    background-color: gray;
+    position: absolute;
+    left: 66%;
+    right: 0%;
+    top: 0%;
+    bottom: 66%;
+    height: 33%;
+
+    color: white;
+    font-size: 100px;
+    text-align: center;
+}
+
+#sq8 {
+    background-color: black;
+    position: absolute;
+    left: 66%;
+    right: 0%;
+    top: 33%;
+    bottom: 33%;
+    height: 33%;
+
+    color: white;
+    font-size: 100px;
+    text-align: center;
+}
+
+#sq9 {
+    background-color: cyan;
+    position: absolute;
+    left: 66%;
+    right: 0%;
+    top: 66%;
+    bottom: 0%;
+    height: 33%;
+
+    color: white;
+    font-size: 100px;
+    text-align: center;
+}
+
+/*holy grail excercise*/
+#header {
+    background-color: red;
+    position: absolute;
+    height: 10%;
+    left: 0%;
+    right: 0%;
+    top: 0%;
+    bottom: 90%;
+}
+
+#footer {
+    background-color: black;
+    position: absolute;
+    height: 10%;
+    left: 0%;
+    right: 0%;
+    top: 90%;
+    bottom: 0%;
+}
+
+#body-left {
+    background-color: green;
+    position: absolute;
+    height: 80%;
+    left: 0%;
+    right: 80%;
+    top: 10%;
+    bottom: 10%;
+}
+
+#body-right {
+    background-color: blue;
+    position: absolute;
+    height: 80%;
+    left: 80%;
+    right: 0%;
+    top: 10%;
+    bottom: 10%;
+}
+
+#body-center {
+    background-color: yellow;
+    position: absolute;
+    height: 80%;
+    left: 20%;
+    right: 20%;
+    top: 10%;
+    bottom: 10%;
+}

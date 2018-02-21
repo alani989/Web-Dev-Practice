@@ -1,0 +1,60 @@
+body {
+    background-color: black;
+}
+
+#main-container {
+    background-color: white;
+    position: absolute;
+    left: 30%;
+    right: 30%;
+    top: 0%;
+    bottom: 0%;
+    height: 100%;
+    text-align: justify;
+    padding: 1cm;
+}
+
+.modal-dialog {
+    width: 500px;
+    height: 200px;
+    position: fixed;
+    left: 36%;
+    right: 30%;
+    bottom: 30%;
+    top: 35%;
+    background-color: white;
+    border: 5px solid black;
+}
+    .modal-header {
+        background-color: grey;
+        height: 20%;
+    }
+
+    .modal-title {
+        position: absolute;
+        right: 85%;
+        margin-top: 5px;
+        color: white;
+        font-size: 30px;
+    }
+
+    .modal-content {
+        background-color: white;
+        font-size: 20px;
+        margin-left: 5px;
+        display: inline-block;
+    }
+
+    .modal-buttons {
+        background-color: white;
+        position: absolute;
+        left: 69%;
+        top: 85%;
+    }
+
+    button {
+        text-align: center;
+        font-size: 90%;
+        width: 70px;
+        height: 20px;
+    }
