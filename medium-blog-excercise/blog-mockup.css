@@ -1,0 +1,87 @@
+body {
+    text-align: center;
+    background-color: #17232a;
+}
+
+/*header formatting*/
+#header {
+    text-align: right;
+    padding-right: 100px;
+    font-family: Verdana;
+}
+
+a {
+    text-decoration: none;
+    padding: 10px;
+}
+
+#signin-link {
+    color: #7dcfb6;
+}
+
+#follow-link {
+    color: #909091;
+}
+
+#signin-link:hover, #follow-link:hover {
+    color: #0d497c;
+}
+
+/*body formatting*/
+/*the middle white horizontal bar*/
+.middle-frame {
+    width: 35cm;
+    background-color: white;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 20px;
+}
+
+p {
+    color: #5c5d5d;
+    font-size: 19px;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+#profile {
+    border-radius: 50%;
+    width: 80px;
+}
+
+#name, #bio {
+    color: #909091;
+    font-size: 12px;
+    margin-left: 15px;
+}
+
+#follow-btn {
+    border-radius: 12px;
+    border:  2px solid #3ab29f;
+    color: #3ab29f;
+    text-align: center;
+    font-size: 80%;
+}
+
+#follow-btn:hover {
+    color: white;
+    background-color: #3ab29f;
+}
+
+.main-body {
+    text-align: justify;
+    width: 600px;
+    background-color: white;
+    margin-top: 70px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 30px;
+    padding-top: 50px;
+    color: #363636;
+    font-family: Verdana;
+}
+
+.center-image {
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+}
