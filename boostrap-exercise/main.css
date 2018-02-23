@@ -1,0 +1,23 @@
+body {
+    font-family: URW Chancery L, cursive;
+}
+
+#myBrand {
+    color: aliceblue;
+}
+
+.myBorder {
+    border-bottom: solid 1px;
+    border-color: brown;
+    padding-bottom: 3px;
+    padding-top: 3px;
+}
+
+a {
+    color: aliceblue;
+}
+
+.myFlag {
+    width: 50px;
+    height: 30px;
+}
