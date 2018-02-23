@@ -1,0 +1,81 @@
+  #myRow{
+    background-color: white;
+  }
+
+  #square {
+    width: 100px;
+    height: 100px;
+    background-color: red;
+  }
+
+  #rectangle {
+    width: 170px;
+    height: 100px;
+    background-color: yellow;
+  }
+
+  #tri-down {
+    width: 50px;
+    height: 50px;
+    border-left: 50px solid transparent;
+    border-right: 50px solid transparent;
+    border-top: 100px solid green;
+  }
+
+  /* fix me */
+  #trap {
+    width: 50px;
+    height: 30px;
+    border-left: 50px solid transparent;
+    border-right: 50px solid transparent;
+    border-top: 100px solid blue;
+  }
+
+  #right-tri {
+    width: 100px;
+    height: 100px;
+    border-left: 100px solid transparent;
+    border-bottom: 100px solid orchid;
+  }
+
+  #oval {
+    width: 150px;
+    height: 100px;
+    border-radius: 100%;
+    background-color: brown;
+  }
+
+  #circle {
+    width: 100px;
+    height: 100px;
+    border-radius: 100%;
+    background-color: steelblue;
+  }
+
+  #square-diamond {
+    width: 50px;
+    height: 50px;
+    background-color: turquoise;
+    transform: rotate(140deg)
+  }
+
+  #left-pointing-tri {
+    width: 50px;
+    height: 50px;
+    border-top: 50px solid transparent;
+    border-bottom: 50px solid transparent;
+    border-right: 50px solid orange;
+  }
+
+  #pacman {
+    width: 50px;
+    height: 50px;
+    background-color: black;
+    border-top: 50px solid transparent;
+    border-bottom: 50px solid transparent;
+    border-right: 50px solid white;
+    border-radius: 50px;
+  }
+  #six-point-star {
+
+  }
