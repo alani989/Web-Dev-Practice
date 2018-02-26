@@ -36,8 +36,13 @@ function printNumbers2(startingNum, endingNum) {
 }
 //print a square
 function printSquare(size) {
-    for (var i = 0; i <= size; i++) {
-        console.log(Array(size + 1).join("*") + " " + i);
+    var someArray = [];
+    for (var i = 0; i < size; i++) {
+        someArray[i] = ("*");
+    }
+    var newLine = someArray.join("");
+    for (var k = 0; k < size; k++) {
+        console.log(Array(size + 1).join(newLine + "\n"));
     }
 }
 //print a box
@@ -68,7 +73,7 @@ function longVowels(text) {
     }
 }
 //Just the positives
-function positiveNumbers(someArray=[]) {
+function positiveNumbers(someArray = []) {
     var positiveArray = [];
     for (var i = 0; i < someArray.length; i++) {
         if (someArray[i] > 0) {
