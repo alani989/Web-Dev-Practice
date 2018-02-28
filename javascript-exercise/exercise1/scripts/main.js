@@ -82,3 +82,10 @@ function positiveNumbers(someArray = []) {
     }
     console.log(positiveArray);
 }
+//for each loop example
+function forEachExample() {
+    myArray = [1, 2, 3];
+    myArray.forEach(element => {
+        console.log(element);
+    });
+}
