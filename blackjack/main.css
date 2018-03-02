@@ -1,0 +1,35 @@
+#table {
+    margin-bottom: 50%;
+    margin-top: 50%;
+    background-color: green;
+    border: solid 5px;
+    border-radius: 25px;
+    border-color: gray;
+    padding:10%;
+    color: white;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 25px;
+}
+
+.player {
+    background-color: lightgrey;
+    padding: 10px;
+    display: flex;
+    align-content: flex-start;
+    height: 100%;  
+}
+
+.myButton {
+    margin: 0px 10px;
+}
+
+.card {
+    height: 150px;
+    width: 110px;
+    border-radius: 10px;
+}
+
+.hand {
+    display: flex;
+    align-content: flex-start;
+}
