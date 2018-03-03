@@ -69,36 +69,35 @@ console.log("Sorted Names");
 console.log(people.sort());
 
 // sort an array by name's length , shortest name first
-var sortedArry = [];
-people.sort(function (a, b) {
-    if (a.length <= b.length) {
-        sortedArry.push(a)
-    } else {
-        return b;
-    }
+var sortedArry = people.sort(function (a,b) {
+    return a.length - b.length;
 });
 console.log("Sorted Length, shortest first");
 console.log(sortedArry);
 
 // // sort an array by sum of inner arrays
-// var arr = [
-//     [1, 3, 4],
-//     [2, 4, 6, 8],
-//     [3, 6]
-// ];
-// var sumArry = arr.reduce(function (a, b) {
-//     return a+b;
-// });
-// var sumSortedArry = arr.sort(function (a, b) {
-//     return (sumArry(a) - sumArry(b));
-// });
-// console.log("Array sorted by sum of inner arrays");
-// console.log(sumSortedArry);
+var arr = [
+    [1, 3, 4],
+    [2, 4, 6, 8],
+    [3, 6]
+];
+var sumArry = arr.sort(function (e1, e2) {
+    var sum1 = e1.reduce(function (a, b) {
+        return a + b;
+    });
+    var sum2 = e2.reduce(function (a, b) {
+        return a + b;
+    });
+    if (sum1 > sum2) {
+        return sum1;
+    }
+});
+console.log("Array sorted by sum of inner arrays");
+console.log(sumArry);
 
 // 3 times
 function fun() {
     console.log("Hello, world");
-    console.log("************");
 }
 function call3Times(fun) {
     fun();
