@@ -2,29 +2,73 @@
 //images source directory
 var dir = "images/cards/";
 //declaring arrays for players points
-var dealePoints = [];
-var playerPoints = [];
+var dealerPoints = [0];
+var playerPoints = [0];
+//storing both players scores
+function Points() {
+    function sum(total, num) {
+        return total + num;
+    }
+    var points = {
+        dealerTotal: dealerPoints.reduce(sum),
+        playerTotal: playerPoints.reduce(sum)
+    }
+    return points;
+}
+//when hit button is clicked
+function hit() {
+    var points = new Points();
+    console.log(points.dealerTotal);
+    if (points.dealerTotal >= 17 && points.dealerTotal <= 21) {
+        alert("Dealer Stands!")
+        checkScore();
+    } else {
+        var drawnCard = new DrawnCard(); // create first card object
+        var img = document.createElement("img"); // draw card on html
+        img.src = drawnCard.src; // setting card src
 
-//when deal button is clicked
+        var drawnCard2 = new DrawnCard(); // create first card object
+        var img2 = document.createElement("img"); // draw card on html
+        img2.src = drawnCard2.src; // setting card src
+
+        // setting the card class from css
+        img.className = "card";
+        img2.className = "card";
+        //add the cards to the html page
+        var dealer_hand = document.getElementById("dealer-hand");
+        var player_hand = document.getElementById("player-hand");
+        dealer_hand.appendChild(img);
+        player_hand.appendChild(img2);
+        //update hands' score
+        scoreUpdate(drawnCard.value, drawnCard2.value);
+        checkScore();
+    }
+}
+
 function deal() {
-    var drawnCard = new DrawnCard(); // create first card object
-    var img = document.createElement("img"); // draw card on html
-    img.src = drawnCard.src; // setting card src
+    hit();
+    hit();
+}
 
-    var drawnCard2 = new DrawnCard(); // create first card object
-    var img2 = document.createElement("img"); // draw card on html
-    img2.src = drawnCard2.src; // setting card src
-
-    // setting the card class from css
-    img.className = "card";
-    img2.className = "card";
-    //add the cards to the html page
-    var dealer_hand = document.getElementById("dealer-hand");
-    var player_hand = document.getElementById("player-hand");
-    dealer_hand.appendChild(img);
-    player_hand.appendChild(img2);
-    //update hands' score
-    scoreUpdate(drawnCard.value, drawnCard2.value);
+function stand() {
+    var points = new Points();
+    //check for the dealer score before drawing a card
+    if (points.dealerTotal < 17) {
+        var drawnCard = new DrawnCard(); // create first card object
+        var img = document.createElement("img"); // draw card on html
+        img.src = drawnCard.src; // setting card src
+        // setting the card class from css
+        img.className = "card";
+        //add the cards to the html page
+        var dealer_hand = document.getElementById("dealer-hand");
+        dealer_hand.appendChild(img);
+        //update dealer score
+        standScoreUpdate(drawnCard.value);
+    } else {
+        alert("Both players stand!");
+        finalScore = new FinalScore();
+    }
+    checkScore();
 }
 
 // storing all cards in an array
@@ -51,20 +95,63 @@ var DrawnCard = function () {
     return selectedCard;
 }
 
-function scoreUpdate(card1, card2) {
-    //a function to add up points
-    function sum(total, num) {
-        return total + num;
-    }
+function scoreUpdate(card1Value, card2Value) {
+    var points = new Points();
     //adding cards to each player's array
-    dealePoints.push(card1)
-    playerPoints.push(card2)
-    //assigning the points total to a variable 
-    var dealerTotal = dealePoints.reduce(sum);
-    var playerTotal = playerPoints.reduce(sum);
+    dealerPoints.push(card1Value);
+    playerPoints.push(card2Value);
     //maping the scores to the html
     var dealerPointsLbl = document.getElementById("dealer-points");
-    dealerPointsLbl.textContent = dealerTotal;
+    dealerPointsLbl.textContent = points.dealerTotal;
     var playerPointsLbl = document.getElementById("player-points");
-    playerPointsLbl.textContent = playerTotal;
+    playerPointsLbl.textContent = points.playerTotal;
+    if (points.dealerTotal > 21 || points.playerTotal > 21) {
+        alert("Busted!");
+        reset();
+    }
+    if (points.playerTotal <= 21 && points.dealerTotal > 21) {
+        alert("Player wins! Dealer busted");
+    } else if (points.dealerTotal <= 21 && points.playerTotal > 21) {
+        alert("Dealer wins! Dealer busted");
+    }
+}
+
+function standScoreUpdate(cardValue) {
+    var points = new Points();
+    dealerPoints.push(cardValue);
+    var dealerPointsLbl = document.getElementById("dealer-points");
+    dealerPointsLbl.textContent = points.dealerTotal;
+    if (points.dealerTotal > 21) {
+        alert("Player wins! Dealer busted!");
+        reset();
+    }
+}
+
+function FinalScore() {
+    var points = new Points();
+    if (points.dealerTotal > points.playerTotal || points.dealerTotal == 21) {
+        alert("Dealer wins!");
+        reset();
+    } else if (points.dealerTotal < points.playerTotal || points.playerTotal == 21) {
+        alert("Player wins!");
+        reset();
+    } else if (points.dealerTotal == points.playerTotal) {
+        alert("It's a draw");
+    }
+    return points.dealerTotal;
+}
+
+function checkScore() {
+    var points = new Points();
+    if (points.dealerTotal == 21) {
+        alert("Dealer wins!");
+        reset();
+    } else if (points.playerTotal == 21) {
+        alert("Players wins!");
+        reset();
+    }
+}
+
+function reset() {
+    window.location.reload(false);
 }
