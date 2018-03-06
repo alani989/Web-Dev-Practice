@@ -1,6 +1,4 @@
 #table {
-    margin-bottom: 50%;
-    margin-top: 50%;
     background-color: green;
     border: solid 5px;
     border-radius: 25px;
@@ -32,4 +30,8 @@
 .hand {
     display: flex;
     align-content: flex-start;
+}
+
+#brand {
+    
 }
