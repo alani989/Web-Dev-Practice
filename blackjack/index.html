@@ -12,44 +12,64 @@
 </head>
 
 <body>
-    <div class="col-md-2"></div>
-    <div id="table" class="container col-md-8">
 
-        <div class="row d-flex justify-content-center">
+    <div id="table" class="container col-md-8">
+        <!-- logo container -->
+        <div class="row d-flex justify-content-center" id="myLogo">
             <img src="images/vegas.png" alt="">
         </div>
         <br>
-        <div id="messages"></div>
-
-        <label>Dealer: </label>
-        <label id="dealer-points" class="points"></label>
-        <div class="player row">
-            <div id="dealer-hand" class="hand">
-                <img src="images/red_back.jpg" class="card" alt="">
+        <!-- cards/score/games container -->
+        <div id="handsAndScore" class="col-md-12">
+            <!-- dealer's points -->
+            <div class="row d-flex justify-content-between">
+                <label>Dealer:
+                    <label id="dealer-points" class="points"></label>
+                </label>
+                <label id "gamesWonLbl">Games Won</label>
             </div>
-        </div>
-
-        <label>Player: </label>
-        <label id="player-points" class="points"></label>
-        <div class="player row">
-            <div id="player-hand" class="hand">
-                <img src="images/red_back.jpg" class="card" alt="">
+            <!-- dealer's hand -->
+            <div class="row">
+                <div class="col-md-2">
+                    <img src="images/red_back.jpg" class="card" alt="">
+                </div>
+                <div class="player justify-content-between col-md-10">
+                    <div id="dealer-hand" class="hand"></div>
+                    <div class="gamesWonDiv">
+                        <h1 id="dealerTally"></h1>
+                    </div>
+                </div>
             </div>
-        </div>
+            <!-- player's points -->
+            <div class="row d-flex justify-content-between">
+                <label>Player:
+                    <label id="player-points" class="points"></label>
+                </label>
+            </div>
+            <!-- player's hand -->
+            <div class="row">
+                <div class="col-md-2">
+                    <img src="images/red_back.jpg" class="card" alt="">
+                </div>
+                <div class="player justify-content-between col-md-10">
+                    <div id="player-hand" class="hand"></div>
+                    <div class="gamesWonDiv">
+                        <h1 id="playerTally"></h1>
+                    </div>
+                </div>
+            </div>
 
+        </div>
         <br>
-
+        <!-- buttons -->
         <div class="buttons d-flex justify-content-center">
             <button class="btn btn-light myButton" id="deal-button" onclick="deal()">Deal</button>
-            <button class="btn btn-light myButton" id="hit-button" onclick="hit()">Hit</button>
-            <button class="btn btn-light myButton" id="stand-button" onclick="stand()">Stand</button>
+            <button class="btn btn-light myButton" id="hit-button" disabled onclick="hit()">Hit</button>
+            <button class="btn btn-light myButton" id="stand-button" disabled onclick="stand()">Stand</button>
         </div>
-
     </div>
 
-    <div class="col-md-2"></div>
-    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
-        crossorigin="anonymous"></script>
+    <!-- scripts -->
     <script src="scripts/blackjack.js"></script>
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
         crossorigin="anonymous"></script>

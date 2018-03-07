@@ -1,4 +1,3 @@
-//declaring variables
 //images source directory
 var dir = "images/cards/";
 // storing all cards in an array
@@ -22,8 +21,14 @@ var points = {
     dealerTotal: 0,
     playerTotal: 0
 }
+// storing games won in gamesWon object
+var gamesWon = {
+    dealerTally: 0,
+    playerTally: 0,
+}
 // run function on page loadup
 window.onload = function () {
+    gamesWonUdate();
     scoreUpdate(points.dealerTotal, points.playerTotal);
 };
 //storing both players scores
@@ -68,6 +73,9 @@ function hit() {
 function deal() {
     hit();
     hit();
+    var hitBtn = document.getElementById("hit-button").removeAttribute("disabled");
+    var standBtn = document.getElementById("stand-button").removeAttribute("disabled");
+    var dealBtn = document.getElementById("deal-button").disabled = true;
 }
 
 function stand() {
@@ -105,8 +113,11 @@ function dealerStands() {
 
 var DrawnCard = function () {
     var card = Math.floor(Math.random() * Math.floor(13));
-    var cardImg = Math.floor(Math.random() * Math.floor(4));
+    var cardImg = Math.floor(Math.random() * Math.floor(deck[card].src.length - 1));
     var selectedCard = { value: deck[card].value, src: deck[card].src[cardImg] };
+    //remove card to avoid duplicates
+    var removed = deck[card].src.splice(cardImg, 1);
+    console.log(deck);//for testing and verifying the card has been removed
     return selectedCard;
 }
 
@@ -119,23 +130,29 @@ function scoreUpdate(card1Value, card2Value) {
     dealerPointsLbl.textContent = points.dealerTotal;
     var playerPointsLbl = document.getElementById("player-points");
     playerPointsLbl.textContent = points.playerTotal;
-    if (points.dealerTotal > 21 || points.playerTotal > 21) {
-        alert("Busted!");
-        reset();
-    }
+
     if (points.playerTotal <= 21 && points.dealerTotal > 21) {
         alert("Player wins! Dealer busted");
+        gamesWon.playerTally++;
+        reset();
     } else if (points.dealerTotal <= 21 && points.playerTotal > 21) {
-        alert("Dealer wins! Dealer busted");
+        alert("Dealer wins! Player busted");
+        gamesWon.dealerTally++;
+        reset();
+    } else if (points.dealerTotal > 21 || points.playerTotal > 21) {
+        alert("Both Busted!");
+        reset();
     }
 }
 
 function checkScore() {
     if (points.dealerTotal == 21) {
         alert("Dealer wins! scored 21");
+        gamesWon.dealerTally++;
         reset();
     } else if (points.playerTotal == 21) {
         alert("Players wins! scored 21");
+        gamesWon.playerTally++;
         reset();
     }
 }
@@ -143,8 +160,10 @@ function checkScore() {
 function FinalScore() {
     if (points.dealerTotal > points.playerTotal || points.dealerTotal == 21) {
         alert("Dealer wins!");
+        gamesWon.dealerTally++;
     } else if (points.dealerTotal < points.playerTotal || points.playerTotal == 21) {
         alert("Player wins!");
+        gamesWon.playerTally++;
     } else if (points.dealerTotal == points.playerTotal) {
         alert("It's a draw");
     }
@@ -153,5 +172,33 @@ function FinalScore() {
 }
 
 function reset() {
-    window.location.reload(false);
+    // clear table
+    var dealer_hand = document.getElementById("dealer-hand");
+    var player_hand = document.getElementById("player-hand");
+    var dealerPointsLbl = document.getElementById("dealer-points");
+    var playerPointsLbl = document.getElementById("player-points");
+    while (dealer_hand.firstChild) {
+        dealer_hand.removeChild(dealer_hand.firstChild);
+        dealerPointsLbl.textContent = 0;
+        points.dealerTotal = 0;
+    }
+    while (player_hand.firstChild) {
+        player_hand.removeChild(player_hand.firstChild);
+        playerPointsLbl.textContent = 0;
+        points.playerTotal = 0;
+    }
+    //reset buttons
+    var dealer_hand = document.getElementById("dealer-hand");
+    var hitBtn = document.getElementById("hit-button").disabled = true;
+    var standBtn = document.getElementById("stand-button").disabled = true;
+    var dealBtn = document.getElementById("deal-button").removeAttribute("disabled");
+    gamesWonUdate();
 }
+
+function gamesWonUdate() {
+    var dealer_tally = document.getElementById("dealerTally");
+    dealer_tally.textContent = gamesWon.dealerTally;
+    var player_tally = document.getElementById("playerTally");
+    player_tally.textContent = gamesWon.playerTally;
+}
+

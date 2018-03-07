@@ -1,20 +1,46 @@
+body {
+    background-image: url("images/background.jpg");
+}
+
 #table {
+    margin: auto;
     background-color: green;
     border: solid 5px;
     border-radius: 25px;
-    border-color: gray;
-    padding:10%;
+    border-color: brown;
+    padding:3%;
     color: white;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     font-size: 25px;
 }
 
+#myLogo {
+    transition: all 0.7s ease;
+    transform-style: preserve-3d;
+}
+
+#myLogo:hover {
+    transform: rotateY(180deg);
+}
+
+#dealerTally {
+    font-family: myfont;
+    font-size: 100px;
+    color: white;
+}
+
+#playerTally {
+    font-family: myfont;
+    font-size: 100px;
+    color: white;
+}
+
 .player {
-    background-color: lightgrey;
+    background: linear-gradient(to right, rgba(255,0,0,0), rgb(240, 247, 152));
     padding: 10px;
     display: flex;
     align-content: flex-start;
-    height: 100%;  
+    height: 170px;
 }
 
 .myButton {
@@ -24,10 +50,23 @@
 .card {
     height: 150px;
     width: 110px;
-    border-radius: 10px;
+    border-radius: 5px;
+    margin-left: 15px;
 }
 
 .hand {
     display: flex;
     align-content: flex-start;
+}
+
+.gamesWonDiv {
+    align-content: center;
+    border: 2px dashed white;
+    background-color: black;
+    padding: 3px;
+}
+
+@font-face {
+    font-family: myfont;
+    src: url("images/myfont.ttf");
 }
