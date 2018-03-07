@@ -1,9 +1,31 @@
-//declaring global variables
+//declaring variables
 //images source directory
 var dir = "images/cards/";
-//declaring arrays for players points
-var dealerPoints = [0];
-var playerPoints = [0];
+// storing all cards in an array
+var deck = [
+    { name: "ace", value: 1, src: [dir + "AC.jpg", dir + "AD.jpg", dir + "AH.jpg", dir + "AS.jpg"] },
+    { name: "two", value: 2, src: [dir + "2C.jpg", dir + "2D.jpg", dir + "2H.jpg", dir + "2S.jpg"] },
+    { name: "three", value: 3, src: [dir + "3C.jpg", dir + "3D.jpg", dir + "3H.jpg", dir + "3S.jpg"] },
+    { name: "four", value: 4, src: [dir + "4C.jpg", dir + "4D.jpg", dir + "4H.jpg", dir + "4S.jpg"] },
+    { name: "five", value: 5, src: [dir + "5C.jpg", dir + "5D.jpg", dir + "5H.jpg", dir + "5S.jpg"] },
+    { name: "six", value: 6, src: [dir + "6C.jpg", dir + "6D.jpg", dir + "6H.jpg", dir + "6S.jpg"] },
+    { name: "seven", value: 7, src: [dir + "7C.jpg", dir + "7D.jpg", dir + "7H.jpg", dir + "7S.jpg"] },
+    { name: "eight", value: 8, src: [dir + "8C.jpg", dir + "8D.jpg", dir + "8H.jpg", dir + "8S.jpg"] },
+    { name: "nine", value: 9, src: [dir + "9C.jpg", dir + "9D.jpg", dir + "9H.jpg", dir + "9S.jpg"] },
+    { name: "ten", value: 10, src: [dir + "10C.jpg", dir + "10D.jpg", dir + "10H.jpg", dir + "10S.jpg"] },
+    { name: "jack", value: 10, src: [dir + "JC.jpg", dir + "JD.jpg", dir + "JH.jpg", dir + "JS.jpg"] },
+    { name: "queen", value: 10, src: [dir + "QC.jpg", dir + "QD.jpg", dir + "QH.jpg", dir + "QS.jpg"] },
+    { name: "king", value: 10, src: [dir + "KC.jpg", dir + "KD.jpg", dir + "KH.jpg", dir + "KS.jpg"] },
+]
+// storing scores in points objects
+var points = {
+    dealerTotal: 0,
+    playerTotal: 0
+}
+// run function on page loadup
+window.onload = function () {
+    scoreUpdate(points.dealerTotal, points.playerTotal);
+};
 //storing both players scores
 function Points() {
     function sum(total, num) {
@@ -17,11 +39,9 @@ function Points() {
 }
 //when hit button is clicked
 function hit() {
-    var points = new Points();
-    console.log(points.dealerTotal);
     if (points.dealerTotal >= 17 && points.dealerTotal <= 21) {
         alert("Dealer Stands!")
-        checkScore();
+        dealerStands();
     } else {
         var drawnCard = new DrawnCard(); // create first card object
         var img = document.createElement("img"); // draw card on html
@@ -51,8 +71,6 @@ function deal() {
 }
 
 function stand() {
-    var points = new Points();
-    //check for the dealer score before drawing a card
     if (points.dealerTotal < 17) {
         var drawnCard = new DrawnCard(); // create first card object
         var img = document.createElement("img"); // draw card on html
@@ -63,7 +81,7 @@ function stand() {
         var dealer_hand = document.getElementById("dealer-hand");
         dealer_hand.appendChild(img);
         //update dealer score
-        standScoreUpdate(drawnCard.value);
+        scoreUpdate(drawnCard.value, 0);
     } else {
         alert("Both players stand!");
         finalScore = new FinalScore();
@@ -71,22 +89,19 @@ function stand() {
     checkScore();
 }
 
-// storing all cards in an array
-var deck = [
-    { name: "ace", value: 1, src: [dir + "AC.jpg", dir + "AD.jpg", dir + "AH.jpg", dir + "AS.jpg"] },
-    { name: "two", value: 2, src: [dir + "2C.jpg", dir + "2D.jpg", dir + "2H.jpg", dir + "2S.jpg"] },
-    { name: "three", value: 3, src: [dir + "3C.jpg", dir + "3D.jpg", dir + "3H.jpg", dir + "3S.jpg"] },
-    { name: "four", value: 4, src: [dir + "4C.jpg", dir + "4D.jpg", dir + "4H.jpg", dir + "4S.jpg"] },
-    { name: "five", value: 5, src: [dir + "5C.jpg", dir + "5D.jpg", dir + "5H.jpg", dir + "5S.jpg"] },
-    { name: "six", value: 6, src: [dir + "6C.jpg", dir + "6D.jpg", dir + "6H.jpg", dir + "6S.jpg"] },
-    { name: "seven", value: 7, src: [dir + "7C.jpg", dir + "7D.jpg", dir + "7H.jpg", dir + "7S.jpg"] },
-    { name: "eight", value: 8, src: [dir + "8C.jpg", dir + "8D.jpg", dir + "8H.jpg", dir + "8S.jpg"] },
-    { name: "nine", value: 9, src: [dir + "9C.jpg", dir + "9D.jpg", dir + "9H.jpg", dir + "9S.jpg"] },
-    { name: "ten", value: 10, src: [dir + "10C.jpg", dir + "10D.jpg", dir + "10H.jpg", dir + "10S.jpg"] },
-    { name: "jack", value: 10, src: [dir + "JC.jpg", dir + "JD.jpg", dir + "JH.jpg", dir + "JS.jpg"] },
-    { name: "queen", value: 10, src: [dir + "QC.jpg", dir + "QD.jpg", dir + "QH.jpg", dir + "QS.jpg"] },
-    { name: "king", value: 10, src: [dir + "KC.jpg", dir + "KD.jpg", dir + "KH.jpg", dir + "KS.jpg"] },
-]
+function dealerStands() {
+    var drawnCard = new DrawnCard(); // create first card object
+    var img = document.createElement("img"); // draw card on html
+    img.src = drawnCard.src; // setting card src
+    // setting the card class from css
+    img.className = "card";
+    //add the cards to the html page
+    var player_hand = document.getElementById("player-hand");
+    player_hand.appendChild(img);
+    //update dealer score
+    scoreUpdate(0, drawnCard.value);
+    checkScore();
+}
 
 var DrawnCard = function () {
     var card = Math.floor(Math.random() * Math.floor(13));
@@ -96,10 +111,9 @@ var DrawnCard = function () {
 }
 
 function scoreUpdate(card1Value, card2Value) {
-    var points = new Points();
-    //adding cards to each player's array
-    dealerPoints.push(card1Value);
-    playerPoints.push(card2Value);
+    //update scores values
+    points.dealerTotal = points.dealerTotal + card1Value;
+    points.playerTotal = points.playerTotal + card2Value;
     //maping the scores to the html
     var dealerPointsLbl = document.getElementById("dealer-points");
     dealerPointsLbl.textContent = points.dealerTotal;
@@ -116,40 +130,26 @@ function scoreUpdate(card1Value, card2Value) {
     }
 }
 
-function standScoreUpdate(cardValue) {
-    var points = new Points();
-    dealerPoints.push(cardValue);
-    var dealerPointsLbl = document.getElementById("dealer-points");
-    dealerPointsLbl.textContent = points.dealerTotal;
-    if (points.dealerTotal > 21) {
-        alert("Player wins! Dealer busted!");
+function checkScore() {
+    if (points.dealerTotal == 21) {
+        alert("Dealer wins! scored 21");
+        reset();
+    } else if (points.playerTotal == 21) {
+        alert("Players wins! scored 21");
         reset();
     }
 }
 
 function FinalScore() {
-    var points = new Points();
     if (points.dealerTotal > points.playerTotal || points.dealerTotal == 21) {
         alert("Dealer wins!");
-        reset();
     } else if (points.dealerTotal < points.playerTotal || points.playerTotal == 21) {
         alert("Player wins!");
-        reset();
     } else if (points.dealerTotal == points.playerTotal) {
         alert("It's a draw");
     }
+    reset();
     return points.dealerTotal;
-}
-
-function checkScore() {
-    var points = new Points();
-    if (points.dealerTotal == 21) {
-        alert("Dealer wins!");
-        reset();
-    } else if (points.playerTotal == 21) {
-        alert("Players wins!");
-        reset();
-    }
 }
 
 function reset() {
