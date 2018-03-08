@@ -193,6 +193,7 @@ function reset() {
     var standBtn = document.getElementById("stand-button").disabled = true;
     var dealBtn = document.getElementById("deal-button").removeAttribute("disabled");
     gamesWonUdate();
+    deckReset();
 }
 
 function gamesWonUdate() {
@@ -202,3 +203,20 @@ function gamesWonUdate() {
     player_tally.textContent = gamesWon.playerTally;
 }
 
+function deckReset() {
+    deck = [
+        { name: "ace", value: 1, src: [dir + "AC.jpg", dir + "AD.jpg", dir + "AH.jpg", dir + "AS.jpg"] },
+        { name: "two", value: 2, src: [dir + "2C.jpg", dir + "2D.jpg", dir + "2H.jpg", dir + "2S.jpg"] },
+        { name: "three", value: 3, src: [dir + "3C.jpg", dir + "3D.jpg", dir + "3H.jpg", dir + "3S.jpg"] },
+        { name: "four", value: 4, src: [dir + "4C.jpg", dir + "4D.jpg", dir + "4H.jpg", dir + "4S.jpg"] },
+        { name: "five", value: 5, src: [dir + "5C.jpg", dir + "5D.jpg", dir + "5H.jpg", dir + "5S.jpg"] },
+        { name: "six", value: 6, src: [dir + "6C.jpg", dir + "6D.jpg", dir + "6H.jpg", dir + "6S.jpg"] },
+        { name: "seven", value: 7, src: [dir + "7C.jpg", dir + "7D.jpg", dir + "7H.jpg", dir + "7S.jpg"] },
+        { name: "eight", value: 8, src: [dir + "8C.jpg", dir + "8D.jpg", dir + "8H.jpg", dir + "8S.jpg"] },
+        { name: "nine", value: 9, src: [dir + "9C.jpg", dir + "9D.jpg", dir + "9H.jpg", dir + "9S.jpg"] },
+        { name: "ten", value: 10, src: [dir + "10C.jpg", dir + "10D.jpg", dir + "10H.jpg", dir + "10S.jpg"] },
+        { name: "jack", value: 10, src: [dir + "JC.jpg", dir + "JD.jpg", dir + "JH.jpg", dir + "JS.jpg"] },
+        { name: "queen", value: 10, src: [dir + "QC.jpg", dir + "QD.jpg", dir + "QH.jpg", dir + "QS.jpg"] },
+        { name: "king", value: 10, src: [dir + "KC.jpg", dir + "KD.jpg", dir + "KH.jpg", dir + "KS.jpg"] },
+    ]
+}

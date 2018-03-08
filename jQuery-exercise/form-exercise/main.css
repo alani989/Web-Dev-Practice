@@ -1,0 +1,16 @@
+.loginHeader {
+    background-color: #5fb1a2;
+    color: white;
+}
+
+.formContainer {
+    border: 1px solid #5fb1a2; 
+    margin: 10% auto;
+    width: 25%;
+    box-shadow: 5px 5px rgb(175, 173, 173);
+    font-family: 'Trebuchet MS';
+}
+
+#login {
+    padding: 5%;
+}
